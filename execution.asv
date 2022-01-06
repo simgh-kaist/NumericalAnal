@@ -1,0 +1,9 @@
+
+[A,b,aug_mat] = gen_lin_eqn(3);
+
+inv(A)*b
+gauss_result = gauss_elim(aug_mat)
+
+
+% substitution(gauss_result, "b")
+% inv(A)*b
