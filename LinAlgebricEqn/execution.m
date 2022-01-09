@@ -5,8 +5,10 @@ clc;
 % direct_result = inv(A)*b
 gauss_result = gauss_elim(A)
 
-[l,u, lu_result] = lu_dec(A)
-[L,U] = lu(A)
+[l,u, lu_result] = lu_dec(A);
+[L] = choleski_dec(A);
+L*L'
+A
 
 % my_result = substitution(gauss_result, "b");
 

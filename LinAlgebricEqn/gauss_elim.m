@@ -11,4 +11,3 @@ function [A] = gauss_elim(A)
         end
     end
 end
-
