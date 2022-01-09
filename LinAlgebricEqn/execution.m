@@ -1,14 +1,12 @@
 clear;
 clc;
-[A,b,aug_mat] = gen_lin_eqn(3);
+[A,b,aug_mat] = gen_lin_eqn(5, "tri_diag");
 
-% direct_result = inv(A)*b
-gauss_result = gauss_elim(A)
-
-[l,u, lu_result] = lu_dec(A);
-[L] = choleski_dec(A);
-L*L'
+[L,U] = lu_dec3(A)
 A
+L*U
+% direct_result = inv(A)*b
+
 
 % my_result = substitution(gauss_result, "b");
 
