@@ -9,4 +9,3 @@ function [L, A] = lu_dec3(A)
         L(i,i-1)=lambda;
     end
 end
-

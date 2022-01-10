@@ -1,12 +1,17 @@
 clear;
 clc;
-[A,b,aug_mat] = gen_lin_eqn(5, "tri_diag");
+[A,b,aug_mat] = gen_lin_eqn(3, "normal");
 
-[L,U] = lu_dec3(A)
-A
-L*U
+% conj_grad(func, zeros(5,1), b)
+% cgs(A,b)
+
+% feval(@func, b)
+fun = @(x)[A*x]
+
+conj_grad(fun,zeros(3,1), b)
+
+
 % direct_result = inv(A)*b
-
 
 % my_result = substitution(gauss_result, "b");
 
