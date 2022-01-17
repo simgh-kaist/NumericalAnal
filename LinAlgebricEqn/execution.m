@@ -8,8 +8,8 @@ clc;
 % feval(@func, b)
 fun = @(x)[A*x]
 
-conj_grad(fun,zeros(3,1), b)
-
+conj_grad(A,zeros(3,1), b);
+% conj_grad()
 
 % direct_result = inv(A)*b
 

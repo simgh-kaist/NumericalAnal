@@ -1,26 +1,23 @@
-function [x, num_iter] = conj_grad(func,x,b,epsilon)
+function [x] = conj_grad(A,x,b)
 %CONJUGATED 이 함수의 요약 설명 위치
-%   자세한 설명 위치
-    if nargin==3; epsilon = 1.0e-9; end
-    n = length(b);
-    r = b - feval(func, x)
-    s=r
-    for num_iter=1:3
-        u = feval(func, s)
-        dot(s,u)
-        dot(s,r)
-        alpha = dot(s,r)/dot(s,u)
-        x = x + alpha * s
-        r = b - feval(func, x)
-        if sqrt(dot(r,r))<epsilon
-            return
-        else
-            beta = -dot(r,u)/dot(s,u)
-            s = r + beta * s
-        end
-    end
-    error('Too many iter');
+    r = b - A * x;
+    p = r;
+    rsold = r' * r;
 
+    for i = 1:length(b)
+        Ap = A * p;
+        alpha = rsold / (p' * Ap);
+        x = x + alpha * p;
+        r = r - alpha * Ap;
+        rsnew = r' * r;
+        if sqrt(rsnew) < 1e-10
+              break
+        end
+        p = r + (rsnew / rsold) * p;
+        rsold = rsnew;
+    end
+    A*x
+    b    
 end
 
 
